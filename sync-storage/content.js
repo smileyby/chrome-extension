@@ -1,5 +1,4 @@
 // 监听来自 popup/background的消息
-console.log({localStorage})
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log({request, sender, sendResponse})

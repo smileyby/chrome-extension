@@ -6,4 +6,3 @@
 //     sendResponse(store);
 //   }
 // });
-console.log('this is background');
