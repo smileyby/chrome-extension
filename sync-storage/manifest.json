@@ -1,0 +1,29 @@
+{
+  "name": "sync-storage",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "同步测试环境缓存到本地开发环境",
+  "icons": {
+    "16": "img/logo.png",
+    "48": "img/logo.png",
+    "128": "img/logo.png"
+ },
+  "browser_action": {
+    "default_title": "sync",
+    "default_icon": "img/logo.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
+}

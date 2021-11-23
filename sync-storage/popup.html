@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>sync-storage</title>
+    <style>
+      .card {
+        width: 360px;
+        border-radius: 4px;
+        border: 1px solid #ebeef5;
+        background-color: #fff;
+        overflow: hidden;
+        color: #303133;
+        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+      }
+      .card-header {
+        line-height: 24px;
+        font-size: 18px;
+        color: #333;
+        padding: 20px 20px 10px;
+        -webkit-user-select: none;
+      }
+      .card-body {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        word-break: break-all;
+        -webkit-user-select: none;
+      }
+      .tips {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 10px 0;
+      }
+      .card-footer {
+        padding: 10px 20px 20px;
+        text-align: right;
+        box-sizing: border-box;
+      }
+      .export {
+        color: #67c23a;
+      }
+      .import {
+        color: #e6a23c;
+      }
+    </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <p id="err"></p>
+      <p class="tips">1. 打开测试站点点击导出</p>
+      <p class="tips">2. 打开本地站点点击导入</p>
+      <p class="tips">*导入的缓存将对原有缓存进行覆盖</p>
+    </div>
+    <div class="card-footer">
+      <button class="export">导出</button>
+      <button class="import">导入</button>
+      <button class="reset">重置</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
