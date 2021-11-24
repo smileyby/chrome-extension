@@ -9,20 +9,24 @@ const popupFunc = (function(){
     },
     init(){
       let _this = this;
-      this.data.ex = document.querySelector('.export');
-      this.data.im = document.querySelector('.import');
-      this.data.reset = document.querySelector('.reset');
-      this.data.header = document.querySelector('.card-header');
+      this.data.ex = this.getDom('.export');
+      this.data.im = this.getDom('.import');
+      this.data.reset = this.getDom('.reset');
+      this.data.header = this.getDom('.card-header');
+      this.data.close = this.getDom('.close');
       chrome.storage.local.get(['text', 'store'], function(res){
         _this.setResult(res.store ? res.text : undefined);
       })
       this.addEvent();
     },
+    getDom(name){
+      return document.querySelector(name);
+    },
     setResult(result = '暂无同步数据'){
       this.data.header.innerText = result;
     },
     addEvent(){
-      let { ex, im, reset } = this.data;
+      let { ex, im, reset, close } = this.data;
       let _this = this;
       ex.addEventListener('click', async () => {
         let currentTabId = await this.getCurrentTabId();
@@ -53,6 +57,11 @@ const popupFunc = (function(){
         chrome.storage.local.set({store: null, text: ''}, function(){
           _this.setResult();
         });
+      })
+
+      close.addEventListener('click', async () => {
+        let currentTabId = await this.getCurrentTabId();
+        chrome.tabs.sendMessage(currentTabId, { type: 'close' })
       })
     },
     getCurrentTabId(){

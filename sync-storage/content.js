@@ -1,7 +1,6 @@
 // 监听来自 popup/background的消息
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log({request, sender, sendResponse})
     if (request.type === "get"){
       sendResponse(localStorage);
     }
@@ -13,6 +12,13 @@ chrome.runtime.onMessage.addListener(
         })
         sendResponse();
       }
+    }
+    if (request.type === 'close') {
+      document.querySelector('.v-modal').style.display = 'none';
+      let allDialog = document.getElementsByClassName('el-dialog__wrapper');
+      [...allDialog].forEach((dialog) => {
+        dialog.style.display = 'none';
+      })
     }
   }
 );
