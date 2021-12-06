@@ -16,4 +16,9 @@
 2. 点击导入 => popup 收到通知 将插件缓存中的 store 提取出来 => 发消息通知 content 并携带 store 数据 => content 设置完毕，回调通知 popup
 3. 点击重置 => popup 将本地缓存中的数据全部清除
 
+// 新标签页设置
+"chrome_url_overrides" : {
+  "newtab": "myPage.html"
+},
+
 > 参考文档：https://developer.chrome.com/docs/extension

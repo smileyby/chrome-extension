@@ -14,6 +14,7 @@ const popupFunc = (function(){
       this.data.reset = this.getDom('.reset');
       this.data.header = this.getDom('.card-header');
       this.data.close = this.getDom('.close');
+      this.data.checkbox = this.getDom('.checkbox');
       chrome.storage.local.get(['text', 'store'], function(res){
         _this.setResult(res.store ? res.text : undefined);
       })
@@ -26,7 +27,7 @@ const popupFunc = (function(){
       this.data.header.innerText = result;
     },
     addEvent(){
-      let { ex, im, reset, close } = this.data;
+      let { ex, im, reset, close, checkbox } = this.data;
       let _this = this;
       ex.addEventListener('click', async () => {
         let currentTabId = await this.getCurrentTabId();
@@ -62,6 +63,10 @@ const popupFunc = (function(){
       close.addEventListener('click', async () => {
         let currentTabId = await this.getCurrentTabId();
         chrome.tabs.sendMessage(currentTabId, { type: 'close' })
+      })
+
+      checkbox.addEventListener('change', function(e){
+        console.log(this.checked);
       })
     },
     getCurrentTabId(){

@@ -1,15 +1,15 @@
 {
-  "name": "sync-storage",
+  "name": "beta-tools",
   "version": "1.0.0",
   "manifest_version": 2,
-  "description": "同步测试环境缓存到本地开发环境",
+  "description": "用于开发环境同步缓存，以及查看常用文档",
   "icons": {
     "16": "img/logo.png",
     "48": "img/logo.png",
     "128": "img/logo.png"
  },
   "browser_action": {
-    "default_title": "sync",
+    "default_title": "beta-tools",
     "default_icon": "img/logo.png",
     "default_popup": "popup.html"
   },
@@ -23,6 +23,9 @@
       "js": ["content.js"]
     }
   ],
+  "chrome_url_overrides" : {
+    "newtab": "tabPage.html"
+  },
   "permissions": [
     "storage"
   ]
