@@ -5,7 +5,6 @@ const popupFunc = (function(){
       im: '',
       reset: '',
       header: '',
-      context: '',
     },
     init(){
       this.data.ex = this.getDom('.export');
