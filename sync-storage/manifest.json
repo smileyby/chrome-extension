@@ -27,6 +27,6 @@
     "newtab": "tabPage.html"
   },
   "permissions": [
-    "storage"
+    "storage", "tabs"
   ]
 }

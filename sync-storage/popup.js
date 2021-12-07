@@ -8,15 +8,15 @@ const popupFunc = (function(){
       context: '',
     },
     init(){
-      let _this = this;
       this.data.ex = this.getDom('.export');
       this.data.im = this.getDom('.import');
       this.data.reset = this.getDom('.reset');
       this.data.header = this.getDom('.card-header');
       this.data.close = this.getDom('.close');
       this.data.checkbox = this.getDom('.checkbox');
-      chrome.storage.local.get(['text', 'store'], function(res){
-        _this.setResult(res.store ? res.text : undefined);
+      chrome.storage.local.get(['text', 'store', 'enabled'], (res) => {
+        this.setResult(res.store ? res.text : undefined);
+        this.data.checkbox.checked = res.enabled;
       })
       this.addEvent();
     },
@@ -51,7 +51,6 @@ const popupFunc = (function(){
             _this.setResult('storage已设置');
           })
         });
-        
       })
       
       reset.addEventListener('click', () => {
@@ -65,8 +64,8 @@ const popupFunc = (function(){
         chrome.tabs.sendMessage(currentTabId, { type: 'close' })
       })
 
-      checkbox.addEventListener('change', function(e){
-        console.log(this.checked);
+      checkbox.addEventListener('change', function(){
+        chrome.storage.local.set({enabled: this.checked});
       })
     },
     getCurrentTabId(){
