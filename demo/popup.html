@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo</title>
+  <style>
+    .container {
+      width: 300px;
+      padding: 10px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .note-list {
+      height: 100px;
+      overflow: auto;
+      padding-right: 10px;
+    }
+    .note-list li {
+      display: flex;
+      justify-content: space-between;
+    }
+    .note-list .del {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul>
+      <li>
+        <a href="chrome-extension://plchkfffjjgiekldldcbmhmlmnofhlbi/new-tab.html" target="_blank">New Tab</a>
+        设为标签页 <input type="checkbox" class="checkbox">
+      </li>
+      <li>
+        <button id="btn">变色</button>
+      </li>
+      <li>
+        <button id="save">保存笔记</button>
+        <textarea id="note-text" cols="30" rows="10"></textarea>
+      </li>
+    </ul>
+    <ul class="note-list"></ul>
+  </div>
+  <script src="popup.js"></script> 
+</body>
+</html>
